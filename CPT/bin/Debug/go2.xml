@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<land_record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <object>
+    <common_data>
+      <type>
+        <code>2001001000</code>
+        <value>Земельный участок</value>
+      </type>
+      <cad_number>24:21:1003001:10</cad_number>
+    </common_data>
+    <subtype>
+      <code>1</code>
+      <value>Землепользование</value>
+    </subtype>
+  </object>
+</land_record><?xml version="1.0"?>
+<land_record xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <object>
+    <common_data>
+      <type>
+        <code>2001001000</code>
+        <value>Земельный участок</value>
+      </type>
+      <cad_number>24:21:1003001:100</cad_number>
+    </common_data>
+    <subtype>
+      <code>3</code>
+      <value>Обособленный участок</value>
+    </subtype>
+  </object>
+</land_record>
