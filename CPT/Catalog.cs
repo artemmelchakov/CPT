@@ -215,11 +215,11 @@ namespace CPT.Models
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_data record_dataField;
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockSpatial_data spatial_dataField;
+        private SpatialDataEntity[] spatial_dataField;
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockMunicipal_boundary_record[] municipal_boundariesField;
+        private Bound[] municipal_boundariesField;
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockZones_and_territories_record[] zones_and_territories_boundariesField;
+        private Zone[] zones_and_territories_boundariesField;
 
         /// <remarks/>
         public string cadastral_number
@@ -261,7 +261,8 @@ namespace CPT.Models
         }
 
         /// <remarks/>
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockSpatial_data spatial_data
+        [System.Xml.Serialization.XmlArrayItemAttribute("entity_spatial", IsNullable = false)]
+        public SpatialDataEntity[] spatial_data
         {
             get
             {
@@ -275,7 +276,7 @@ namespace CPT.Models
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("municipal_boundary_record", IsNullable = false)]
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockMunicipal_boundary_record[] municipal_boundaries
+        public Bound[] municipal_boundaries
         {
             get
             {
@@ -289,7 +290,7 @@ namespace CPT.Models
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("zones_and_territories_record", IsNullable = false)]
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockZones_and_territories_record[] zones_and_territories_boundaries
+        public Zone[] zones_and_territories_boundaries
         {
             get
             {
@@ -370,15 +371,15 @@ namespace CPT.Models
     public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_data
     {
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataLand_record[] land_recordsField;
+        private Parcel[] land_recordsField;
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataBuild_record[] build_recordsField;
+        private Build[] build_recordsField;
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataConstruction_record[] construction_recordsField;
+        private Construction[] construction_recordsField;
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("land_record", IsNullable = false)]
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataLand_record[] land_records
+        public Parcel[] land_records
         {
             get
             {
@@ -392,7 +393,7 @@ namespace CPT.Models
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("build_record", IsNullable = false)]
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataBuild_record[] build_records
+        public Build[] build_records
         {
             get
             {
@@ -406,7 +407,7 @@ namespace CPT.Models
 
         /// <remarks/>
         [System.Xml.Serialization.XmlArrayItemAttribute("construction_record", IsNullable = false)]
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataConstruction_record[] construction_records
+        public Construction[] construction_records
         {
             get
             {
@@ -422,9 +423,19 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "land_record"/*, AnonymousType = true*/)]
-    public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataLand_record
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "land_record")]
+    public partial class Parcel : IEntity, IShowable
     {
+        public string Id => this.@object.common_data.cad_number;
+
+        public void Show(InfoShower infoShower) 
+        {
+            string info =
+                "Идентификатор: " + this.@object.common_data.cad_number +
+                "\nКод типа: " + this.@object.common_data.type.code +
+                "\nТип: " + this.@object.common_data.type.value;
+            infoShower?.Invoke(info);
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataLand_recordObject objectField;
 
@@ -2008,9 +2019,20 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataBuild_record
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "build_record")]
+    public partial class Build : IEntity, IShowable
     {
+        public string Id => this.@object.common_data.cad_number;
+
+        public void Show(InfoShower infoShower)
+        {
+            string info =
+                "Идентификатор: " + this.@object.common_data.cad_number +
+                "\nКод типа: " + this.@object.common_data.type.code +
+                "\nТип: " + this.@object.common_data.type.value + 
+                "\nПлощадь: " + this.@params.area.ToString();
+            infoShower?.Invoke(info);
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataBuild_recordObject objectField;
 
@@ -2071,6 +2093,8 @@ namespace CPT.Models
                 this.costField = value;
             }
         }
+
+        
     }
 
     /// <remarks/>
@@ -2942,9 +2966,20 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataConstruction_record
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "construction_record")]
+    public partial class Construction : IEntity, IShowable
     {
+        public string Id => this.@object.common_data.cad_number;
+
+        public void Show(InfoShower infoShower)
+        {
+            string info =
+                "Идентификатор: " + this.@object.common_data.cad_number +
+                "\nКод типа: " + this.@object.common_data.type.code +
+                "\nТип: " + this.@object.common_data.type.value +
+                "\nНазначение: " + this.@params.purpose;
+            infoShower?.Invoke(info);
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataConstruction_recordObject objectField;
 
@@ -3383,14 +3418,14 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "spatial_data")]
     public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockSpatial_data
     {
 
-        private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockSpatial_dataEntity_spatial entity_spatialField;
+        private SpatialDataEntity entity_spatialField;
 
         /// <remarks/>
-        public extract_cadastral_plan_territoryCadastral_blocksCadastral_blockSpatial_dataEntity_spatial entity_spatial
+        public SpatialDataEntity entity_spatial
         {
             get
             {
@@ -3406,9 +3441,16 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockSpatial_dataEntity_spatial
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "entity_spatial")]
+    public partial class SpatialDataEntity : IEntity, IShowable
     {
+        public string Id => this.sk_id.ToString();
+        public void Show(InfoShower infoShower)
+        {
+            string info =
+                "Идентификатор: " + this.sk_id.ToString();
+            infoShower?.Invoke(info);
+        }
 
         private decimal sk_idField;
 
@@ -3529,9 +3571,19 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockMunicipal_boundary_record
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "municipal_boundary_record")]
+    public partial class Bound : IEntity, IShowable
     {
+        public string Id => this.b_object_municipal_boundary.b_object.reg_numb_border;
+        public void Show(InfoShower infoShower)
+        {
+            string info =
+                "Идентификатор: " + this.b_object_municipal_boundary.b_object.reg_numb_border +
+                "\nДата регистрации: " + this.record_info.registration_date +
+                "\nКод типа: " + this.b_object_municipal_boundary.b_object.type_boundary.code +
+                "\nТип: " + this.b_object_municipal_boundary.b_object.type_boundary.value;
+            infoShower?.Invoke(info);
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockMunicipal_boundary_recordRecord_info record_infoField;
 
@@ -3911,9 +3963,21 @@ namespace CPT.Models
     /// <remarks/>
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    public partial class extract_cadastral_plan_territoryCadastral_blocksCadastral_blockZones_and_territories_record
+    [System.Xml.Serialization.XmlTypeAttribute(TypeName = "zones_and_territories_record")]
+    public partial class Zone : IEntity, IShowable
     {
+        public string Id => this.b_object_zones_and_territories.b_object.reg_numb_border;
+        public void Show(InfoShower infoShower)
+        {
+            string info =
+                "Идентификатор: " + this.b_object_zones_and_territories.b_object.reg_numb_border +
+                "\nДата регистрации: " + this.record_info.registration_date +
+                "\nКод типа границы: " + this.b_object_zones_and_territories.b_object.type_boundary.code +
+                "\nТип границы: " + this.b_object_zones_and_territories.b_object.type_boundary.value +
+                "\nКод типа зоны" + this.b_object_zones_and_territories.type_zone.code +
+                "\nТип зоны" + this.b_object_zones_and_territories.type_zone.value;
+            infoShower?.Invoke(info);
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockZones_and_territories_recordRecord_info record_infoField;
 

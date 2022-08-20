@@ -53,27 +53,14 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ArrayOfBound.cs" />
-    <Compile Include="Models\ArrayOfConstruction.cs" />
-    <Compile Include="Models\ArrayOfEntities.cs" />
-    <Compile Include="Models\ArrayOfBuild.cs" />
-    <Compile Include="Models\ArrayOfParcel.cs" />
-    <Compile Include="Models\ArrayOfSpatialData.cs" />
-    <Compile Include="Models\ArrayOfZone.cs" />
-    <Compile Include="Models\Construction.cs" />
-    <Compile Include="Models\extract_cadastral_plan_territory.cs" />
-    <Compile Include="Models\Bound.cs" />
-    <Compile Include="Models\IEntity.cs" />
-    <Compile Include="Models\ISerializable.cs" />
-    <Compile Include="Models\Build.cs" />
-    <Compile Include="Models\Parcel.cs" />
-    <Compile Include="Models\SpatialData.cs" />
+    <Compile Include="Catalog.cs" />
+    <Compile Include="IEntity.cs" />
+    <Compile Include="IShowable.cs" />
     <Compile Include="TreeNodeWithEntity.cs" />
-    <Compile Include="Models\Types\Object_.cs" />
-    <Compile Include="Models\Zone.cs" />
     <Compile Include="ParseHelpers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlEntitiesWrap.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

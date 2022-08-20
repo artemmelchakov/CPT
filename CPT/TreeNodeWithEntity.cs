@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 namespace CPT
 {
-    public class TreeNodeWithEntity: TreeNode
+    public class TreeNodeWithEntity : TreeNode
     {
         public IEntity entity;
+
         public TreeNodeWithEntity(string text, IEntity entity): base(text)
         {
             this.entity = entity;

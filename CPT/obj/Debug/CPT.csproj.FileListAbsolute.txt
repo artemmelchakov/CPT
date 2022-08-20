@@ -8,3 +8,13 @@ D:\Csharp projects\CadastralPlanTerritory_new_new\CPT\CPT\bin\Debug\CPT.exe
 D:\Csharp projects\CadastralPlanTerritory_new_new\CPT\CPT\bin\Debug\CPT.pdb
 D:\Csharp projects\CadastralPlanTerritory_new_new\CPT\CPT\obj\Debug\CPT.exe
 D:\Csharp projects\CadastralPlanTerritory_new_new\CPT\CPT\obj\Debug\CPT.pdb
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.csprojAssemblyReference.cache
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.Form1.resources
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.Properties.Resources.resources
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.csproj.GenerateResource.cache
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.csproj.CoreCompileInputs.cache
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.exe
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\obj\Debug\CPT.pdb
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\bin\Debug\CPT.exe.config
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\bin\Debug\CPT.exe
+d:\Csharp projects\CadastralPlanTerritory_new_new\CPT3\CPT\bin\Debug\CPT.pdb
